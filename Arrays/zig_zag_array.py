@@ -1,22 +1,17 @@
 def zig_zag(arr, n):
-    temp = n * [None]
+    
     flag = True
-
-    low = 0
-    high = n - 1
-    for i in range(n):
+    
+    for i in range(n - 1):
         if flag is True:
-            temp[i] = arr[high]
-            high -= 1
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
 
         else:
-            temp[i] = arr[low]
-            low += 1
+            if arr[i] < arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
 
         flag = bool(1 - flag)
-
-    for i in range(n):
-        arr[i] = temp[i]
 
     return arr
 
